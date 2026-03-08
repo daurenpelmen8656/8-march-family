@@ -1,0 +1,145 @@
+@import "tailwindcss";
+
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #ffffff;
+  background: #f7eef7;
+}
+
+body {
+  min-width: 320px;
+  overflow-x: hidden;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.glass-panel {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 2rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.1));
+  box-shadow: 0 24px 80px rgba(38, 20, 90, 0.15);
+  backdrop-filter: blur(24px);
+}
+
+.circle-button {
+  position: relative;
+  display: flex;
+  height: min(43vw, 18rem);
+  width: min(43vw, 18rem);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14) inset, 0 24px 80px rgba(68, 38, 90, 0.2);
+  backdrop-filter: blur(24px);
+  animation: floatPulse 5.5s ease-in-out infinite;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.circle-button:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.18) inset, 0 28px 90px rgba(68, 38, 90, 0.28);
+}
+
+.circle-button__shine {
+  position: absolute;
+  inset: 10%;
+  border-radius: 9999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.42), transparent 42%);
+  opacity: 0.8;
+}
+
+.script-text {
+  font-family: "Segoe Script", "Snell Roundhand", "Brush Script MT", cursive;
+}
+
+.flower-blur {
+  position: absolute;
+  border-radius: 9999px;
+  background:
+    radial-gradient(circle at 50% 35%, rgba(255, 255, 255, 0.72), transparent 26%),
+    radial-gradient(circle at 28% 45%, rgba(244, 196, 225, 0.72), transparent 29%),
+    radial-gradient(circle at 72% 45%, rgba(212, 170, 231, 0.66), transparent 29%),
+    radial-gradient(circle at 38% 72%, rgba(248, 206, 224, 0.64), transparent 28%),
+    radial-gradient(circle at 62% 72%, rgba(255, 255, 255, 0.44), transparent 28%);
+  filter: blur(14px);
+  animation: bloomDrift 12s ease-in-out infinite;
+}
+
+.petal {
+  position: absolute;
+  top: -12%;
+  width: 1.1rem;
+  height: 1.5rem;
+  border-radius: 80% 20% 70% 30% / 65% 30% 70% 35%;
+  opacity: 0.7;
+  filter: blur(0.2px);
+  animation-name: petalFall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.petal-soft {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(247, 191, 217, 0.8));
+}
+
+.petal-violet {
+  background: linear-gradient(180deg, rgba(245, 227, 255, 0.96), rgba(175, 123, 255, 0.72));
+  box-shadow: 0 0 12px rgba(205, 180, 255, 0.45);
+}
+
+.petal-rose {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(255, 168, 206, 0.78));
+  box-shadow: 0 0 12px rgba(255, 208, 228, 0.45);
+}
+
+@keyframes floatPulse {
+  0%,
+  100% {
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.14) inset, 0 24px 80px rgba(68, 38, 90, 0.2);
+  }
+  50% {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.2) inset, 0 28px 95px rgba(115, 78, 172, 0.3);
+  }
+}
+
+@keyframes bloomDrift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1.04);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.78;
+  }
+  100% {
+    transform: translate3d(5vw, 115vh, 0) rotate(320deg);
+    opacity: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .circle-button {
+    height: min(68vw, 16rem);
+    width: min(68vw, 16rem);
+  }
+
+  .script-text {
+    font-size: 1.45rem;
+    line-height: 1.65;
+  }
+}
